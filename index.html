@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html ng-app="testApp">
+    <head>
+        <meta charset="UTF-8">
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css" rel="stylesheet">
+        <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.0-rc.0/angular.min.js"></script>
+        <script src="scripts/client.js"></script>
+    </head>
+    <body ng-controller="dataView">
+        <ul class="list-group" >
+            <li class="list-group-item" ng-repeat="data in dataView.datas">
+                <table class="table-striped">
+                    <tr>
+                        <td>ID</td>
+                        <td>{{data.id}}</td>
+                    </tr>
+                    <tr >
+                        <td>Area</td>
+                        <td>{{data.area}}</td>
+                    </tr>
+                    <tr>
+                        <td>Rating</td>
+                        <td>{{data.rating}}</td>
+                    </tr>
+                    <tr>
+                        <td>INN</td>
+                        <td>{{data.inn}}</td>
+                    </tr>
+                    <tr>
+                        <td>KPP</td>
+                        <td>{{data.kpp}}</td>
+                    </tr>
+                    <tr>
+                        <td>Name</td>
+                        <td>{{data.name}}</td>
+                    </tr>
+                    <tr>
+                        <td>Full name</td>
+                        <td>{{data.name_full}}</td>
+                    </tr>
+                    <tr>
+                        <td>Address</td>
+                        <td>{{data.address}}</td>
+                    </tr>
+                    <tr>
+                        <td>Address legal</td>
+                        <td>{{data.address_legal}}</td>
+                    </tr>
+                    <tr>
+                        <td>Short description</td>
+                        <td>{{data.anno_short}}</td>
+                    </tr>
+                    <tr>
+                        <td>Full description</td>
+                        <td>{{data.anno}}</td>
+                    </tr>
+                    <tr>
+                        <td>Phone</td>
+                        <td>{{data.phone}}</td>
+                    </tr>
+                    <tr ng-show="data.phone!==''">
+                        <td>Fax</td>
+                        <td>{{data.fax}}</td>
+                    </tr>
+                    <tr ng-show="data.site!==''">
+                        <td>Site</td>
+                        <td>{{data.site}}</td>
+                    </tr>
+                    <tr>
+                        <td>Location</td>
+                        <td>
+                            <ul class="list-group">
+                                <li class="list-group-item" ng-repeat="loc in data.location">
+                                    {{loc}}
+                                </li>
+                            </ul>
+                        </td>
+                    </tr>
+                </table>
+            </li>
+        </ul>
+        <div ng-show="dataView.datas.length === 0 && !dataView.noParam">
+            Requesting for a data...
+        </div>
+        <div ng-show="dataView.noParam">
+            You need to specify id in your request
+        </div>
+        <div ng-show="dataView.notFound">
+            Companies not found by this id
+        </div>
+    </body>
+</html>
